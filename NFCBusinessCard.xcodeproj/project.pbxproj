@@ -14,6 +14,7 @@
 		24A58E332B6688240067E210 /* NFCBusinessCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A58E322B6688240067E210 /* NFCBusinessCardTests.swift */; };
 		24A58E3D2B6688240067E210 /* NFCBusinessCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A58E3C2B6688240067E210 /* NFCBusinessCardUITests.swift */; };
 		24A58E3F2B6688240067E210 /* NFCBusinessCardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A58E3E2B6688240067E210 /* NFCBusinessCardUITestsLaunchTests.swift */; };
+		24A58E4D2B6688800067E210 /* SwiftNFC in Frameworks */ = {isa = PBXBuildFile; productRef = 24A58E4C2B6688800067E210 /* SwiftNFC */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		24A58E382B6688240067E210 /* NFCBusinessCardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFCBusinessCardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A58E3C2B6688240067E210 /* NFCBusinessCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCBusinessCardUITests.swift; sourceTree = "<group>"; };
 		24A58E3E2B6688240067E210 /* NFCBusinessCardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCBusinessCardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		24A58E4E2B6688930067E210 /* NFCBusinessCard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NFCBusinessCard.entitlements; sourceTree = "<group>"; };
+		24A58E4F2B6688AC0067E210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A58E4D2B6688800067E210 /* SwiftNFC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +98,8 @@
 		24A58E202B6688230067E210 /* NFCBusinessCard */ = {
 			isa = PBXGroup;
 			children = (
+				24A58E4F2B6688AC0067E210 /* Info.plist */,
+				24A58E4E2B6688930067E210 /* NFCBusinessCard.entitlements */,
 				24A58E212B6688230067E210 /* NFCBusinessCardApp.swift */,
 				24A58E232B6688230067E210 /* ContentView.swift */,
 				24A58E252B6688240067E210 /* Assets.xcassets */,
@@ -143,6 +149,9 @@
 			dependencies = (
 			);
 			name = NFCBusinessCard;
+			packageProductDependencies = (
+				24A58E4C2B6688800067E210 /* SwiftNFC */,
+			);
 			productName = NFCBusinessCard;
 			productReference = 24A58E1E2B6688230067E210 /* NFCBusinessCard.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +224,9 @@
 				Base,
 			);
 			mainGroup = 24A58E152B6688230067E210;
+			packageReferences = (
+				24A58E4B2B66887F0067E210 /* XCRemoteSwiftPackageReference "SwiftNFC" */,
+			);
 			productRefGroup = 24A58E1F2B6688230067E210 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -419,12 +431,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NFCBusinessCard/NFCBusinessCard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NFCBusinessCard/Preview Content\"";
 				DEVELOPMENT_TEAM = WB32WK7B28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NFCBusinessCard/Info.plist;
+				INFOPLIST_KEY_NFCReaderUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,12 +463,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NFCBusinessCard/NFCBusinessCard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NFCBusinessCard/Preview Content\"";
 				DEVELOPMENT_TEAM = WB32WK7B28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NFCBusinessCard/Info.plist;
+				INFOPLIST_KEY_NFCReaderUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -588,6 +606,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		24A58E4B2B66887F0067E210 /* XCRemoteSwiftPackageReference "SwiftNFC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/1998code/SwiftNFC";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		24A58E4C2B6688800067E210 /* SwiftNFC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24A58E4B2B66887F0067E210 /* XCRemoteSwiftPackageReference "SwiftNFC" */;
+			productName = SwiftNFC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 24A58E162B6688230067E210 /* Project object */;
 }
