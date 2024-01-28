@@ -6,42 +6,52 @@
 //
 
 import SwiftUI
+import SwiftNFC
 
 struct ContentView: View {
     @State var inputUrl = "https://example.com/"
     @FocusState var isFocused: Bool
+    @ObservedObject var NFCR = NFCReader()
+    @ObservedObject var NFCW = NFCWriter()
+    
+    func read() {
+        NFCR.read()
+    }
+
+    func write() {
+        NFCW.msg = NFCR.msg
+        NFCW.write()
+    }
     
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                TextField("URLを入力してください", text: $inputUrl)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .focused($isFocused)
-                    .keyboardType(.URL)
-                    .onSubmit {
-                        // returnされた時の処理
-                        print("\(inputUrl)")
-                    }
-                
-                Spacer()
-                
-                Button(action: {
-                    isFocused = false
-                }, label: {
-                    Text("NFCカードに登録")
-                        .font(.system(size: 20,weight: .bold,design: .default))
-
-                        .padding()
-                })
-                .foregroundColor(.white)
-                .background(.blue)
-                .cornerRadius(10.0)
-                
-                Spacer()
-            }
-            .padding()
+        VStack {
+            Spacer()
+            TextField("URLを入力してください", text: $NFCR.msg)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .focused($isFocused)
+                .keyboardType(.URL)
+                .onSubmit {
+                    // returnされた時の処理
+                    print("\(inputUrl)")
+                }
+            
+            Spacer()
+            
+            Button(action: {
+                write()
+                NFCW.type = "U"
+            }, label: {
+                Text("書き込み")
+                    .font(.system(size: 20,weight: .bold,design: .default))
+                    .padding()
+            })
+            .foregroundColor(.white)
+            .background(.green)
+            .cornerRadius(10.0)
+            
+            Spacer()
         }
+        .padding()
     }
 }
 
