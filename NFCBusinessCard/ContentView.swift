@@ -30,24 +30,42 @@ struct ContentView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .focused($isFocused)
                 .keyboardType(.URL)
-                .onSubmit {
-                    // returnされた時の処理
-                    print("\(inputUrl)")
-                }
+            
+            //Text("\(NFCR.raw)")
             
             Spacer()
             
-            Button(action: {
-                write()
-                NFCW.type = "U"
-            }, label: {
-                Text("書き込み")
-                    .font(.system(size: 20,weight: .bold,design: .default))
-                    .padding()
-            })
-            .foregroundColor(.white)
-            .background(.green)
-            .cornerRadius(10.0)
+            HStack {
+                Button(action: {
+                    write()
+                    NFCW.type = "U"
+                    isFocused = false
+                }, label: {
+                    Text("書き込み")
+                        .font(.system(size: 20,weight: .bold,design: .default))
+                        .padding()
+                })
+                .foregroundColor(.white)
+                .background(.blue)
+                .cornerRadius(10.0)
+                .padding()
+                
+                
+                Button(action: {
+                    read()
+                    print(NFCR.msg)
+                }, label: {
+                    Text("読み込み")
+                        .font(.system(size: 20,weight: .bold,design: .default))
+                        .padding()
+                })
+                .foregroundColor(.accentColor)
+                .background(.gray)
+                .cornerRadius(10.0)
+                .padding()
+                
+            }
+            
             
             Spacer()
         }
