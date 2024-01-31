@@ -9,15 +9,20 @@ import SwiftUI
 import SwiftNFC
 
 struct ContentView: View {
-    @State var inputUrl = ""
+    @State var inputUrl:String = ""
+    @State var readedUrl:String = ""
     @FocusState var isFocused: Bool
     @ObservedObject var NFCR = NFCReader()
     @ObservedObject var NFCW = NFCWriter()
+        
     
     func read() {
         NFCR.read()
-        
+        readedUrl = NFCR.raw
+        print(readedUrl)
     }
+
+
     
     func write() {
         NFCW.msg = inputUrl
@@ -26,12 +31,14 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            
+            Text("\(readedUrl)")
+            
             Spacer()
             TextField("URLを入力してください", text: $inputUrl, axis: .vertical)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .focused($isFocused)
                 .keyboardType(.URL)
-                .frame(width: .infinity,height: 100)
             
             //Text("\(NFCR.raw)")
             
