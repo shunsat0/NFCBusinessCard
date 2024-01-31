@@ -16,6 +16,7 @@ struct ContentView: View {
     
     func read() {
         NFCR.read()
+        
     }
     
     func write() {
@@ -30,6 +31,7 @@ struct ContentView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .focused($isFocused)
                 .keyboardType(.URL)
+                .frame(width: .infinity,height: 100)
             
             //Text("\(NFCR.raw)")
             
@@ -50,10 +52,8 @@ struct ContentView: View {
                 .cornerRadius(10.0)
                 .padding()
                 
-                
                 Button(action: {
                     read()
-                    print(NFCR.msg)
                 }, label: {
                     Text("読み込み")
                         .font(.system(size: 20,weight: .bold,design: .default))
@@ -63,10 +63,7 @@ struct ContentView: View {
                 .background(.gray)
                 .cornerRadius(10.0)
                 .padding()
-                
             }
-            
-            
             Spacer()
         }
         .padding()
